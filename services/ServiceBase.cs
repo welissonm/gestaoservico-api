@@ -70,5 +70,11 @@ namespace GestaoServico.Service
             .Where(expression)
             .ToListAsync();
         }
+
+        public async virtual Task<T> Update(T entity){
+            this._dbSet.Update(entity);
+            var rowNumbers = await this._context.SaveChangesAsync();
+            return entity;
+        }
     }
 }
